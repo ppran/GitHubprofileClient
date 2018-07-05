@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">GitHub profile Client</string>
+    <string name="username">Enter Github Username</string>
+    <string name="load">LOAD</string>
+    <string name="not_available">Not Available</string>
+    <string name="email">Email</string>
+    <string name="foo_bar">Foo Bar</string>
+    <string name="company">Company</string>
+    <string name="bio">Bio</string>
+    <string name="number_of_repository">Number Of Repository</string>
+    <string name="followers">Followers</string>
+    <string name="repository">Repositories</string>
+    <string name="location_not_available">Location Not Available</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="created_on">Created On</string>
+    <string name="enter_github_username">Enter Github Username</string>
+    <string name="welcome">Welcome!</string>
+</resources>
