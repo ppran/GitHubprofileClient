@@ -1,12 +1,12 @@
 package com.pranavpanage.githubprofileclient;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,13 +16,12 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class DisplayUserProfile extends AppCompatActivity {
+public class DisplayOrgProfile extends Activity {
 
-    private class ImageDownloader extends AsyncTask<String, Void , Bitmap>{
+    private class OrgImageDownloader extends AsyncTask<String, Void , Bitmap> {
 
         /**
          * Override this method to perform a computation on a background thread. The
@@ -66,7 +65,7 @@ public class DisplayUserProfile extends AppCompatActivity {
         @Override
         protected void onPostExecute(Bitmap bitmap) {
             //Set Image
-            ImageView imageView = findViewById(R.id.imageProfile);
+            ImageView imageView = findViewById(R.id.imageProfileOrg);
             RoundedBitmapDrawable dr = RoundedBitmapDrawableFactory.create(getResources(),bitmap);
             //dr.setCornerRadius(Math.max(bitmap.getWidth(), bitmap.getHeight()) / 2.0f);
             dr.setCircular(true);
@@ -77,33 +76,32 @@ public class DisplayUserProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_user_profile);
+        setContentView(R.layout.activity_display_org_profile);
 
         //Get parcelable Object from Search Activity
-        UserProfile userProfile = getIntent().getParcelableExtra("com.pranavpanage.githubprofileclient");
+        UserProfile userProfile = getIntent().getParcelableExtra("com.pranavpanage.githubprofileclient org");
 
-        TextView textView = findViewById(R.id.userName);
+        TextView textView = findViewById(R.id.orgName);
         textView.setText(userProfile.getUsername());
 
-        ImageDownloader imageDownloader = new ImageDownloader();
+        DisplayOrgProfile.OrgImageDownloader imageDownloader = new DisplayOrgProfile.OrgImageDownloader();
         imageDownloader.execute(userProfile.getAvatar_url());
 
-        TextView textViewLocation = findViewById(R.id.location);
+        TextView textViewLocation = findViewById(R.id.locationOrg);
         textViewLocation.setText(userProfile.getLocation());
 
-        TextView textViewEmail = findViewById(R.id.emailID);
+        TextView textViewEmail = findViewById(R.id.emailIDOrg);
         textViewEmail.setText(userProfile.getEmail());
 
-        TextView textViewCompany = findViewById(R.id.company);
-        textViewCompany.setText(userProfile.getCompany());
 
-        TextView textViewBio = findViewById(R.id.bio);
-        textViewBio.setText(userProfile.getBio());
 
-        TextView textViewRepository = findViewById(R.id.numberRepository);
+        TextView textViewBlog = findViewById(R.id.blogOrg);
+        textViewBlog.setText(userProfile.getBlog());
+
+        TextView textViewRepository = findViewById(R.id.numberRepositoryOrg);
         textViewRepository.setText(userProfile.getPublic_repos());
 
-        TextView textViewDate = findViewById(R.id.createdOn);
+        TextView textViewDate = findViewById(R.id.createdOnOrg);
         TimeZone tz = TimeZone.getTimeZone("UTC");
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sss'Z'");
         df.setTimeZone(tz);
@@ -115,8 +113,7 @@ public class DisplayUserProfile extends AppCompatActivity {
         }
         textViewDate.setText(date.toString());
 
-        TextView textViewFollowers = findViewById(R.id.textFollowers);
-        textViewFollowers.setText(userProfile.getFollowers());
+
 
     }
 }

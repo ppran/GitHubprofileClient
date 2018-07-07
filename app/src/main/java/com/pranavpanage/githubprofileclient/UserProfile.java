@@ -1,6 +1,5 @@
 package com.pranavpanage.githubprofileclient;
 
-import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -8,13 +7,15 @@ public class UserProfile implements Parcelable{
     String username;
     String avatar_url;
     String html_url;
-    String compnay;
+    String company;
     String location;
     String email;
     String bio;
     String public_repos;
     String created_on;
     String followers;
+    String blog;
+    String type;
 
     public UserProfile() {
     }
@@ -23,13 +24,15 @@ public class UserProfile implements Parcelable{
         username = in.readString();
         avatar_url = in.readString();
         html_url = in.readString();
-        compnay = in.readString();
+        company = in.readString();
         location = in.readString();
         email = in.readString();
         bio = in.readString();
         public_repos = in.readString();
         created_on = in.readString();
         followers=in.readString();
+        blog=in.readString();
+        type=in.readString();
     }
 
     public static final Creator<UserProfile> CREATOR = new Creator<UserProfile>() {
@@ -68,12 +71,12 @@ public class UserProfile implements Parcelable{
         this.html_url = html_url;
     }
 
-    public String getCompnay() {
-        return compnay;
+    public String getCompany() {
+        return company;
     }
 
-    public void setCompnay(String compnay) {
-        this.compnay = compnay;
+    public void setCompany(String compnay) {
+        this.company = compnay;
     }
 
     public String getLocation() {
@@ -120,6 +123,18 @@ public class UserProfile implements Parcelable{
         this.followers = followers;
     }
 
+    public String getBlog() { return blog; }
+
+    public void setBlog(String blog) { this.blog = blog;  }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getFollowers() {
         return followers;
     }
@@ -151,12 +166,14 @@ public class UserProfile implements Parcelable{
         dest.writeString(username);
         dest.writeString(avatar_url);
         dest.writeString(html_url);
-        dest.writeString(compnay);
+        dest.writeString(company);
         dest.writeString(location);
         dest.writeString(email);
         dest.writeString(bio);
         dest.writeString(public_repos);
         dest.writeString(created_on);
         dest.writeString(followers);
+        dest.writeString(blog);
+        dest.writeString(type);
     }
 }

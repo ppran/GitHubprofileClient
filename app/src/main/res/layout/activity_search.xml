@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".SearchActivity">
 
-
     <RelativeLayout
         android:id="@+id/mainRelative"
         android:layout_width="match_parent"
@@ -22,53 +21,43 @@
             android:textSize="32sp"
             android:fontFamily="sans-serif-light"
             android:layout_centerHorizontal="true"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="@string/enter_github_username"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/address"
-            android:textSize="15sp"
-            android:layout_below="@+id/welcome"
-            android:paddingBottom="5dp"/>
-
-
     </RelativeLayout>
 
-
     <LinearLayout
+        android:id="@+id/linearUserLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/mainRelative"
         android:orientation="vertical"
         android:gravity="center"
         android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
-
-            <EditText
-                android:id="@+id/usernameText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:layout_gravity="center"
-                android:fontFamily="sans-serif" />
-
-            <Button
-                android:id="@+id/SearchButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="getString"
-                android:text="@string/load"
-                android:theme="@style/AppTheme"
-                android:fontFamily="sans-serif"
-                android:textColor="@color/white"/>
+        android:paddingTop="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
 
 
+        <EditText
+            android:id="@+id/usernameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:hint="@string/enter_username"
+            android:paddingTop="30dp"/>
+
+        <Button
+            android:id="@+id/SearchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="getString"
+            android:text="@string/load"
+            android:theme="@style/AppTheme"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
+
 
 
 </RelativeLayout>

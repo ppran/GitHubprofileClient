@@ -19,7 +19,7 @@ public class AsyncSendRequest extends AsyncTask<String,Void,UserProfile> {
     public AsyncResponse delegate = null;
 
     public interface AsyncResponse{
-        void afterfinish(UserProfile userProfile);
+        void afterFinish(UserProfile userProfile);
     }
 
     /**
@@ -52,13 +52,7 @@ public class AsyncSendRequest extends AsyncTask<String,Void,UserProfile> {
      */
     @Override
     protected void onPostExecute(UserProfile userProfile) {
-        /*
-        TextView nameView = (TextView) ((Activity)context).findViewById(R.id.nameView);
-        nameView.setText(username);
-        ImageView imageView = (ImageView) ((Activity)context).findViewById(R.id.profilePicture);
-        imageView.setImageBitmap(result);*/
-        //progressBar.setVisibility(View.INVISIBLE);
-        delegate.afterfinish(userProfile);
+        delegate.afterFinish(userProfile);
     }
 
     /**
@@ -117,12 +111,10 @@ public class AsyncSendRequest extends AsyncTask<String,Void,UserProfile> {
                             //String company = jsonReader.nextString();
                             if (jsonReader.peek() == JsonToken.NULL){
                                 jsonReader.nextNull();
-                                userProfile.setCompnay("Not Available");
+                                userProfile.setCompany("Not Available");
                                 break;
                             }
-                            //userProfile.setCompnay( jsonReader.peek() != JsonToken.NULL ? jsonReader.nextString() : jsonReader.nextNull());
-                            userProfile.setCompnay(jsonReader.nextString());
-                            //jsonReader.skipValue();
+                            userProfile.setCompany(jsonReader.nextString());
                             break;
                         case "location":
                             if (jsonReader.peek() == JsonToken.NULL){
@@ -141,7 +133,7 @@ public class AsyncSendRequest extends AsyncTask<String,Void,UserProfile> {
                                 break;
                             }
                             String email = jsonReader.nextString();
-                            userProfile.setLocation(email);
+                            userProfile.setEmail(email);
                             //jsonReader.skipValue();
                             break;
                         case "bio":
@@ -166,6 +158,17 @@ public class AsyncSendRequest extends AsyncTask<String,Void,UserProfile> {
                         case "followers":
                             int followersCount = jsonReader.nextInt();
                             userProfile.setFollowers(String.valueOf(followersCount));
+                            break;
+                        case "blog":
+                            if (jsonReader.peek()==JsonToken.NULL){
+                                jsonReader.nextNull();
+                                userProfile.setBlog("Not Available");
+                                break;
+                            }
+                            userProfile.setBlog(jsonReader.nextString());
+                            break;
+                        case"type":
+                            userProfile.setType(jsonReader.nextString());
                             break;
                         default:
                                 jsonReader.skipValue(); // Skip values of other keys

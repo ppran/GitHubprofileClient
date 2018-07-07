@@ -15,4 +15,10 @@
     <string name="created_on">Created On</string>
     <string name="enter_github_username">Enter Github Username</string>
     <string name="welcome">Welcome!</string>
+    <string name="orgname">Enter Organisation Username</string>
+    <string name="blog">Blog</string>
+    <string name="enter_organisation_name">Enter Organisation Name</string>
+    <string name="individual_user_profile">Individual User Profile</string>
+    <string name="company_profile">Company Profile</string>
+    <string name="enter_username">Enter Username</string>
 </resources>
